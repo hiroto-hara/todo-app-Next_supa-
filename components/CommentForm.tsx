@@ -27,7 +27,7 @@ export const CommentForm: FC<{ noteId: string }> = ({ noteId }) => {
     return <Spinner />
   }
 
-  eturn(
+  return (
     <form onSubmit={submitHandler}>
       <input
         type="text"
