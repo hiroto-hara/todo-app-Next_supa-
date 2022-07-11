@@ -1,10 +1,10 @@
-import { FormEvent, VFC } from 'react'
+import { FormEvent, FC } from 'react'
 import { supabase } from '../utils/supabase'
 import useStore from '../store'
 import { useMutateNote } from '../hooks/useMutateNote'
 import { Spinner } from './Spinner'
 
-export const NoteForm: VFC = () => {
+export const NoteForm: FC = () => {
   const { editedNote } = useStore()
   const update = useStore((state) => state.updateEditedNote)
   const { createNoteMutation, updateNoteMutation } = useMutateNote()
@@ -52,7 +52,7 @@ export const NoteForm: VFC = () => {
       <div className="my-2 flex justify-center">
         <button
           type="submit"
-          className="ml-2 rounded bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700"
+          className="ml-2 rounded bg-emerald-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700"
         >
           {editedNote.id ? 'Update' : 'Create'}
         </button>
