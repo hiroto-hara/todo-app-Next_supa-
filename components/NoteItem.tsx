@@ -1,6 +1,10 @@
 import { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
-import { PencilAltIcon, TrashIcon } from '@heroicons/react/solid'
+import {
+  PencilAltIcon,
+  TrashIcon,
+  CheckCircleIcon,
+} from '@heroicons/react/solid'
 import { supabase } from '../utils/supabase'
 import useStore from '../store'
 import { useMutateNote } from '../hooks/useMutateNote'
@@ -20,14 +24,17 @@ export const NoteItem: FC<
     return <Spinner />
   }
   return (
-    <li className="my-3">
-      <Link href={`/note/${id}`} prefetch={false}>
-        <a className="cursor-pointer hover:text-pink-600">{title}</a>
-      </Link>
+    <li className="my-3 flex h-14 justify-between bg-lime-100">
+      <div className="ml-2 flex items-center text-emerald-700">
+        <CheckCircleIcon className="h-6 w-6" />
+        <Link href={`/note/${id}`} prefetch={false}>
+          <a className="cursor-pointer hover:text-emerald-600">{title}</a>
+        </Link>
+      </div>
       {userId === user_id && (
-        <div className="float-right ml-20 flex">
+        <div className="mr-2 flex items-center">
           <PencilAltIcon
-            className="mx-1 h-5 w-5 cursor-pointer text-blue-500"
+            className="mx-2 h-5 w-5 cursor-pointer text-emerald-700"
             onClick={() => {
               update({
                 id: id,
@@ -37,7 +44,7 @@ export const NoteItem: FC<
             }}
           />
           <TrashIcon
-            className="h-5 w-5 cursor-pointer text-blue-500"
+            className="h-5 w-5 cursor-pointer text-emerald-700"
             onClick={() => {
               deleteNoteMutation.mutate(id)
             }}

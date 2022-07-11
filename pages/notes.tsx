@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { LogoutIcon, DocumentTextIcon } from '@heroicons/react/solid'
+import { LogoutIcon } from '@heroicons/react/solid'
 import { GetStaticProps } from 'next'
 import { supabase } from '../utils/supabase'
 import { Layout } from '../components/Layout'
@@ -33,12 +33,10 @@ const Notes: NextPage<StaticProps> = ({ notes }) => {
   }
   return (
     <Layout title="Notes">
-      <LogoutIcon
-        className="mb-6 h-6 w-6 cursor-pointer text-blue-500"
-        onClick={signOut}
-      />
-      <DocumentTextIcon className="h-8 w-8 text-blue-500" />
-      <ul className="my-2">
+      <div className="flex h-20 w-5/6 items-center justify-center bg-lime-200 text-3xl text-emerald-900">
+        たびの計画
+      </div>
+      <ul className="my-2 w-4/5">
         {notes.map((note) => (
           <NoteItem
             key={note.id}
@@ -50,6 +48,10 @@ const Notes: NextPage<StaticProps> = ({ notes }) => {
         ))}
       </ul>
       <NoteForm />
+      <LogoutIcon
+        className="mb-6 h-6 w-6 cursor-pointer text-emerald-600"
+        onClick={signOut}
+      />
     </Layout>
   )
 }
