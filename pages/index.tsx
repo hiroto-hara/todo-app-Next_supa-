@@ -3,6 +3,7 @@ import { BadgeCheckIcon, BookOpenIcon } from '@heroicons/react/solid'
 import type { NextPage } from 'next'
 import { useMutateAuth } from '../hooks/useMutateAuth'
 import { Layout } from '../components/Layout'
+import Image from 'next/image'
 
 const Auth: NextPage = () => {
   const [isLogin, setIsLogin] = useState(true)
@@ -24,11 +25,19 @@ const Auth: NextPage = () => {
   }
   return (
     <Layout title="Auth">
-      <div className="text-2xl text-emerald-700">
+      <div className={'fixed top-0 left-0 z-[-1] h-screen w-full'}>
+        <Image
+          src="/images/top.png"
+          alt={'top'}
+          layout={'fill'}
+          objectFit={'cover'}
+        />
+      </div>
+      <div className="my-2 rounded-md bg-emerald-600 font-serif text-xl text-slate-50">
         <span className="text-2xl ">たびかんり。</span>
         <span className="text-xs ">あなたの旅と一緒に</span>
       </div>
-      <BookOpenIcon className="y-6 h-12 w-12 text-emerald-600" />
+      {/* <BookOpenIcon className="y-6 h-12 w-12 text-emerald-600" /> */}
       <form onSubmit={handleSubmit}>
         <div>
           <input
@@ -57,7 +66,7 @@ const Auth: NextPage = () => {
         <div className="my-4 flex items-center justify-center text-sm">
           <span
             onClick={() => setIsLogin(!isLogin)}
-            className="cursor-pointer font-medium hover:text-emerald-700"
+            className="cursor-pointer font-medium text-slate-50 hover:text-slate-300"
           >
             新規登録はこちらから
           </span>
