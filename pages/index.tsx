@@ -35,7 +35,7 @@ const Auth: NextPage = () => {
       </div>
       <div className="my-2 rounded-md bg-emerald-600 font-serif text-xl text-slate-50">
         <span className="text-2xl ">たびかんり。</span>
-        <span className="text-xs ">あなたの旅と一緒に</span>
+        <span className="text-xs ">いつもあなたの旅と一緒に</span>
       </div>
       {/* <BookOpenIcon className="y-6 h-12 w-12 text-emerald-600" /> */}
       <form onSubmit={handleSubmit}>
