@@ -4,6 +4,7 @@ import {
   PencilAltIcon,
   TrashIcon,
   CheckCircleIcon,
+  HeartIcon,
 } from '@heroicons/react/solid'
 import { supabase } from '../utils/supabase'
 import useStore from '../store'
@@ -44,11 +45,13 @@ export const NoteItem: FC<
             }}
           />
           <TrashIcon
-            className="h-5 w-5 cursor-pointer text-emerald-700"
+            className="mx-5 h-5 w-5 cursor-pointer text-emerald-700"
             onClick={() => {
               deleteNoteMutation.mutate(id)
             }}
           />
+          <HeartIcon className="h-5 w-5 cursor-pointer text-red-500" />
+          <span className="ml-1 text-xs"></span>
         </div>
       )}
     </li>
