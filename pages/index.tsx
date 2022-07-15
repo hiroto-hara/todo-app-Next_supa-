@@ -19,7 +19,7 @@ const Auth: NextPage = () => {
 
   const signInWithGoogle = async () => {
     await supabase.auth.signIn({ provider: 'google' })
-    // Router.push('/')
+    // Router.push('/')?
   }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
