@@ -18,12 +18,17 @@ export const NoteItem: FC<
   const [userId, setUserId] = useState<string | undefined>('')
   const update = useStore((state) => state.updateEditedNote)
   const { deleteNoteMutation } = useMutateNote()
+
+  const [likes, setLikes] = useState<boolean>(false)
+
   useEffect(() => {
     setUserId(supabase.auth.user()?.id)
   }, [])
+
   if (deleteNoteMutation.isLoading) {
     return <Spinner />
   }
+
   return (
     <li className="my-3 flex h-14 justify-between bg-lime-100">
       <div className="ml-2 flex items-center text-emerald-700">
@@ -32,28 +37,43 @@ export const NoteItem: FC<
           <a className="cursor-pointer hover:text-emerald-600">{title}</a>
         </Link>
       </div>
-      {userId === user_id && (
-        <div className="mr-2 flex items-center">
-          <PencilAltIcon
-            className="mx-2 h-5 w-5 cursor-pointer text-emerald-700"
-            onClick={() => {
-              update({
-                id: id,
-                title: title,
-                content: content,
-              })
-            }}
-          />
-          <TrashIcon
-            className="mx-5 h-5 w-5 cursor-pointer text-emerald-700"
-            onClick={() => {
-              deleteNoteMutation.mutate(id)
-            }}
-          />
-          <HeartIcon className="h-5 w-5 cursor-pointer text-red-500" />
-          <span className="ml-1 text-xs"></span>
-        </div>
-      )}
+      <div className="mr-2 flex items-center">
+        {userId === user_id && (
+          <>
+            <PencilAltIcon
+              className="mx-2 h-5 w-5 cursor-pointer text-emerald-700"
+              onClick={() => {
+                update({
+                  id: id,
+                  title: title,
+                  content: content,
+                })
+              }}
+            />
+            <TrashIcon
+              className="mx-5 h-5 w-5 cursor-pointer text-emerald-700"
+              onClick={() => {
+                deleteNoteMutation.mutate(id)
+              }}
+            />
+
+            <span className="ml-1 text-xs"></span>
+          </>
+        )}
+        <span>
+          {likes ? (
+            <HeartIcon
+              onClick={() => setLikes(!likes)}
+              className=" h-5 w-5 cursor-pointer text-red-500"
+            />
+          ) : (
+            <HeartIcon
+              onClick={() => setLikes(!likes)}
+              className=" text-grey-500 h-5 w-5 cursor-pointer"
+            />
+          )}
+        </span>
+      </div>
     </li>
   )
 }
