@@ -19,7 +19,7 @@ const Auth: NextPage = () => {
 
   const signInWithGoogle = async () => {
     await supabase.auth.signIn({ provider: 'google' })
-    // Router.push('/')?
+    // Router.push('/')
   }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -90,11 +90,7 @@ const Auth: NextPage = () => {
         <button
           type="submit"
           className="group relative my-4 flex w-full justify-center rounded-md bg-emerald-600 py-2 px-4 text-sm font-medium text-white hover:bg-emerald-700"
-          onClick={async function signInWithGoogle() {
-            const { user, session, error } = await supabase.auth.signIn({
-              provider: 'google',
-            })
-          }}
+          onClick={signInWithGoogle}
         >
           <span className="absolute inset-y-0 left-0 flex items-center pl-3">
             <BadgeCheckIcon className="h-5 w-5" />
