@@ -7,6 +7,8 @@ import { NoteForm } from '../components/NoteForm'
 import { NoteItem } from '../components/NoteItem'
 import { Note } from '../types/types'
 import { type } from 'os'
+import Image from 'next/image'
+import { DateForm } from '../components/DateForm'
 
 export const getStaticProps: GetStaticProps = async () => {
   console.log('ISR invoked - notes page')
@@ -33,25 +35,35 @@ const Notes: NextPage<StaticProps> = ({ notes }) => {
   }
   return (
     <Layout title="Notes">
-      <div className="flex h-20 w-5/6 items-center justify-center bg-lime-200 text-3xl text-emerald-900">
-        たびの計画
+      <div className={'fixed top-0 left-0 z-[-1] h-screen w-full'}>
+        <Image
+          src="/images/top.png"
+          alt={'top'}
+          layout={'fill'}
+          objectFit={'cover'}
+        />
       </div>
-      <ul className="my-2 w-4/5">
-        {notes.map((note) => (
-          <NoteItem
-            key={note.id}
-            id={note.id}
-            title={note.title}
-            content={note.content}
-            user_id={note.user_id}
-          />
-        ))}
-      </ul>
-      <NoteForm />
-      <LogoutIcon
-        className="mb-6 h-6 w-6 cursor-pointer text-emerald-600"
-        onClick={signOut}
-      />
+      <div className="flex flex-col items-center ">
+        <div className="mt-4 flex h-[7vh] w-[80vw] items-center justify-center rounded-md bg-slate-50 font-serif text-3xl text-emerald-900 shadow-xl">
+          〜〜* たびの計画 *〜〜
+        </div>
+        <ul className="my-2 w-4/5">
+          {notes.map((note) => (
+            <NoteItem
+              key={note.id}
+              id={note.id}
+              title={note.title}
+              content={note.content}
+              user_id={note.user_id}
+            />
+          ))}
+        </ul>
+        <NoteForm />
+        <LogoutIcon
+          className="mb-6 h-6 w-6 cursor-pointer text-emerald-600"
+          onClick={signOut}
+        />
+      </div>
     </Layout>
   )
 }

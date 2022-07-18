@@ -40,8 +40,8 @@ const Auth: NextPage = () => {
           objectFit={'cover'}
         />
       </div>
-      <div className="my-2 rounded-md bg-emerald-600 font-serif text-xl text-slate-50">
-        <span className="text-2xl ">たびかんり。</span>
+      <div className="my-2 rounded-md bg-emerald-600 py-2 px-2 font-serif text-xl text-slate-50">
+        <span className="text-lg ">たびかんり。</span>
         <span className="text-xs ">あなたの旅と一緒に</span>
       </div>
       {/* <BookOpenIcon className="y-6 h-12 w-12 text-emerald-600" /> */}

@@ -11,6 +11,7 @@ import useStore from '../store'
 import { useMutateNote } from '../hooks/useMutateNote'
 import { Spinner } from './Spinner'
 import { Note } from '../types/types'
+import { DateForm } from './DateForm'
 
 export const NoteItem: FC<
   Omit<Note, 'created_at' | 'note_id' | 'comments'>
@@ -30,11 +31,14 @@ export const NoteItem: FC<
   }
 
   return (
-    <li className="my-3 flex h-14 justify-between bg-lime-100">
-      <div className="ml-2 flex items-center text-emerald-700">
-        <CheckCircleIcon className="h-6 w-6" />
+    <li className="my-3 flex h-14 justify-between rounded-md bg-slate-50 font-serif shadow-xl">
+      <div className="ml-2 flex items-center  text-emerald-700">
+        <CheckCircleIcon className=" mr-2 h-6 w-6" />
+        <DateForm />
         <Link href={`/note/${id}`} prefetch={false}>
-          <a className="cursor-pointer hover:text-emerald-600">{title}</a>
+          <a className="cursor-pointer hover:text-emerald-500">
+            {title} <span className="text-gray-400">←click</span>
+          </a>
         </Link>
       </div>
       <div className="mr-2 flex items-center">
@@ -69,7 +73,7 @@ export const NoteItem: FC<
           ) : (
             <HeartIcon
               onClick={() => setLikes(!likes)}
-              className=" text-grey-500 h-5 w-5 cursor-pointer"
+              className=" h-5 w-5 cursor-pointer text-emerald-700"
             />
           )}
         </span>
