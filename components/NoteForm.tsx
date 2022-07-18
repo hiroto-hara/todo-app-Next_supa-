@@ -34,7 +34,7 @@ export const NoteForm: FC = () => {
         <input
           type="text"
           className="my-2 rounded border border-gray-300 px-3 py-2 text-sm placeholder-gray-500 focus:border-indigo-500 focus:outline-none"
-          placeholder="title"
+          placeholder="New plan"
           value={editedNote.title}
           onChange={(e) => update({ ...editedNote, title: e.target.value })}
         />
@@ -42,7 +42,7 @@ export const NoteForm: FC = () => {
       <div>
         <textarea
           cols={50}
-          rows={10}
+          rows={5}
           className="my-2 rounded border border-gray-300 px-3 py-2 text-sm placeholder-gray-500 focus:border-indigo-500 focus:outline-none"
           placeholder="content"
           value={editedNote.content}

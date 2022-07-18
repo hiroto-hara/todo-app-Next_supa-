@@ -1,17 +1,29 @@
 import create from 'zustand'
-import { EditedNote, EditedComment } from './types/types'
+import { EditedDate, EditedNote, EditedComment } from './types/types'
 
 type State = {
+  editedDate: EditedDate
   editedNote: EditedNote
   editedComment: EditedComment
+  updateEditedDate: (payload: EditedDate) => void
   updateEditedNote: (payload: EditedNote) => void
   updateEditedComment: (payload: EditedComment) => void
+  resetEditedDate: () => void
   resetEditedNote: () => void
   resetEditedComment: () => void
 }
 const useStore = create<State>((set, _) => ({
+  editedDate: { id: '', date: '' },
   editedNote: { id: '', title: '', content: '' },
   editedComment: { id: '', content: '' },
+  updateEditedDate: (payload) =>
+    set({
+      editedDate: {
+        id: payload.id,
+        date: payload.date,
+      },
+    }),
+  resetEditedDate: () => set({ editedDate: { id: '', date: '' } }),
   updateEditedNote: (payload) =>
     set({
       editedNote: {
