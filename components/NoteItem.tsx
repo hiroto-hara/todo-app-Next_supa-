@@ -11,7 +11,6 @@ import useStore from '../store'
 import { useMutateNote } from '../hooks/useMutateNote'
 import { Spinner } from './Spinner'
 import { Note } from '../types/types'
-import { DateForm } from './DateForm'
 
 export const NoteItem: FC<
   Omit<Note, 'created_at' | 'note_id' | 'comments'>
@@ -34,7 +33,6 @@ export const NoteItem: FC<
     <li className="my-3 flex h-14 justify-between rounded-md bg-slate-50 font-serif shadow-xl">
       <div className="ml-2 flex items-center  text-emerald-700">
         <CheckCircleIcon className=" mr-2 h-6 w-6" />
-        <DateForm />
         <Link href={`/note/${id}`} prefetch={false}>
           <a className="cursor-pointer hover:text-emerald-500">
             {title} <span className="text-gray-400">←click</span>
