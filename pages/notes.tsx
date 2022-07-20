@@ -8,7 +8,6 @@ import { NoteItem } from '../components/NoteItem'
 import { Note } from '../types/types'
 import { type } from 'os'
 import Image from 'next/image'
-import { DateForm } from '../components/DateForm'
 
 export const getStaticProps: GetStaticProps = async () => {
   console.log('ISR invoked - notes page')
