@@ -6,7 +6,6 @@ import { Layout } from '../components/Layout'
 import { NoteForm } from '../components/NoteForm'
 import { NoteItem } from '../components/NoteItem'
 import { Note } from '../types/types'
-import { type } from 'os'
 import Image from 'next/image'
 
 export const getStaticProps: GetStaticProps = async () => {
