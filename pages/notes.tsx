@@ -7,6 +7,7 @@ import { NoteForm } from '../components/NoteForm'
 import { NoteItem } from '../components/NoteItem'
 import { Note } from '../types/types'
 import Image from 'next/image'
+import { useState } from 'react'
 
 export const getStaticProps: GetStaticProps = async () => {
   console.log('ISR invoked - notes page')
@@ -31,16 +32,9 @@ const Notes: NextPage<StaticProps> = ({ notes }) => {
   const signOut = () => {
     supabase.auth.signOut()
   }
+  const [backGround, setBackground] = useState<boolean>(true)
   return (
     <Layout title="Notes">
-      <div className={'fixed top-0 left-0 z-[-1] h-screen w-full'}>
-        <Image
-          src="/images/top.png"
-          alt={'top'}
-          layout={'fill'}
-          objectFit={'cover'}
-        />
-      </div>
       <div className="flex flex-col items-center ">
         <div className="mt-4 flex h-[7vh] w-[80vw] items-center justify-center rounded-md bg-slate-50 font-serif text-3xl text-emerald-900 shadow-xl">
           〜〜* たびの計画 *〜〜
@@ -61,6 +55,28 @@ const Notes: NextPage<StaticProps> = ({ notes }) => {
           className="mb-6 h-6 w-6 cursor-pointer text-emerald-600"
           onClick={signOut}
         />
+        {backGround ? (
+          <>
+            <div className={'fixed top-0 left-0 z-[-1] h-screen w-full '}>
+              <Image
+                src="/images/top.png"
+                alt={'top'}
+                layout={'fill'}
+                objectFit={'cover'}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={'fixed top-0 left-0 h-screen w-full '}></div>
+          </>
+        )}
+        <button
+          className="cursor-pointer"
+          onClick={() => setBackground((backGround) => !backGround)}
+        >
+          背景切替
+        </button>
       </div>
     </Layout>
   )
